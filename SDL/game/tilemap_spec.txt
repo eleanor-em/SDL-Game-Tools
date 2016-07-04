@@ -1,0 +1,42 @@
+File format specification (version 2)
+--
+0x00: 2 bytes: "TM" (string)
+0x02: 4 bytes: version number (int)
+0x06: 4 bytes: map width (int)
+0x0A: 4 bytes: map height (int)
+0x0E: 4 bytes: tile width (int)
+0x12: 4 bytes: tile height (int)
+0x16: 4 bytes: number of properties (int)
+
+0x1A: 4 bytes: number of texture chunks (int)
+0x1E: begin texture chunks
+
+Texture chunk:
+0x00: 4 bytes: tile width (int)
+0x04: 4 bytes: tile height (int)
+0x08: n bytes: file name (null terminated string)
+
+0xXX: 4 bytes: number of tile prototype chunks (int)
+0xXX+4: begin tile prototype chunks
+
+Tile prototype chunk:
+0x00: 4 bytes: texture id (unsigned int)
+0x04: 4 bytes: x position in tileset (int)
+0x08: 4 bytes: y position in tileset (int)
+0x0B: begin property chunks
+    Property chunk:
+    0x00: 4 bytes: property value (int)
+    
+0xYY: begin property chunks
+
+Property chunk:
+0x00: n bytes: property name (null terminated string)
+
+0xZZ: 4 bytes: number of tile chunks
+oxZZ+4: begin tile chunks
+
+Tile chunk:
+0x00: 4 bytes: tile id (unsigned int)
+0x04: 4 bytes: x position (int)
+0x08: 4 bytes: y position (int)
+
